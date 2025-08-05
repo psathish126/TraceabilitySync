@@ -29,28 +29,35 @@ interface MaterialFlow {
 
 const Dashboard: React.FC = () => {
   const [metrics, setMetrics] = useState<DashboardMetrics>({
-    ethicalSourcing: 95,
-    productionEfficiency: 88,
-    defectRate: 2,
-    activeMaterials: 1247,
-    completedBatches: 89,
-    pendingShipments: 12
+    ethicalSourcing: 0,
+    productionEfficiency: 0,
+    defectRate: 0,
+    activeMaterials: 0,
+    completedBatches: 0,
+    pendingShipments: 0
   });
 
-  const [materialFlow, setMaterialFlow] = useState<MaterialFlow[]>([
-    { stage: 'Raw Materials', count: 542, status: 'normal' },
-    { stage: 'In Processing', count: 318, status: 'normal' },
-    { stage: 'Quality Check', count: 89, status: 'warning' },
-    { stage: 'Assembly', count: 156, status: 'normal' },
-    { stage: 'Ready to Ship', count: 73, status: 'normal' }
-  ]);
-
+  const [materialFlow, setMaterialFlow] = useState<MaterialFlow[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate API loading
-    const timer = setTimeout(() => setIsLoading(false), 1000);
-    return () => clearTimeout(timer);
+    // Load real data from API
+    const loadData = async () => {
+      setIsLoading(true);
+      try {
+        // Connect to real API endpoints here
+        // const metrics = await apiService.getDashboardMetrics();
+        // const flow = await apiService.getMaterialFlow();
+        // setMetrics(metrics);
+        // setMaterialFlow(flow);
+      } catch (error) {
+        console.error('Failed to load dashboard data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
   }, []);
 
   const getStatusColor = (status: string) => {

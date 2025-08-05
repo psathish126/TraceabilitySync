@@ -27,56 +27,23 @@ const AIInsights = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate AI-powered insights
-    setTimeout(() => {
-      setInsights([
-        {
-          id: '1',
-          type: 'anomaly',
-          title: 'Material Quality Deviation',
-          description: 'Cobalt batch CB-2024-157 shows 15% variance from quality standards',
-          confidence: 94,
-          impact: 'high',
-          action: 'Recommend immediate quality inspection'
-        },
-        {
-          id: '2',
-          type: 'prediction',
-          title: 'Supply Chain Disruption Risk',
-          description: 'Lithium supplier delivery delay predicted with 87% confidence',
-          confidence: 87,
-          impact: 'medium',
-          action: 'Activate backup supplier protocol'
-        },
-        {
-          id: '3',
-          type: 'optimization',
-          title: 'Production Efficiency Opportunity',
-          description: 'Optimizing Line 3 sequence could increase throughput by 12%',
-          confidence: 79,
-          impact: 'medium',
-          action: 'Schedule production line optimization'
-        },
-        {
-          id: '4',
-          type: 'risk',
-          title: 'Compliance Risk Assessment',
-          description: 'EU Battery Regulation compliance score: 92% - minor gaps identified',
-          confidence: 96,
-          impact: 'low',
-          action: 'Review documentation requirements'
-        }
-      ]);
+    // Load real AI insights from ML services
+    const loadAIInsights = async () => {
+      setIsLoading(true);
+      try {
+        // Connect to real AI/ML service endpoint here
+        // const insights = await aiService.getInsights();
+        // const metrics = await aiService.getMetrics();
+        // setInsights(insights);
+        // setMetrics(metrics);
+      } catch (error) {
+        console.error('Failed to load AI insights:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-      setMetrics({
-        anomaliesDetected: 3,
-        predictiveAccuracy: 91.5,
-        riskScore: 23,
-        optimizationPotential: 15.7
-      });
-
-      setIsLoading(false);
-    }, 1500);
+    loadAIInsights();
   }, []);
 
   const getInsightIcon = (type: string) => {

@@ -39,41 +39,22 @@ interface AnalyticsData {
 const Analytics: React.FC = () => {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData>({
     productionTrends: {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      values: [845, 792, 901, 756, 823, 689, 734]
+      labels: [],
+      values: []
     },
     materialDistribution: {
-      cobalt: 35,
-      lithium: 28,
-      nickel: 22,
-      graphite: 15
+      cobalt: 0,
+      lithium: 0,
+      nickel: 0,
+      graphite: 0
     },
     qualityMetrics: {
-      averageScore: 94.2,
-      defectRate: 2.1,
-      reworkRate: 1.8,
-      complianceRate: 98.5
+      averageScore: 0,
+      defectRate: 0,
+      reworkRate: 0,
+      complianceRate: 0
     },
-    bottleneckPredictions: [
-      {
-        stage: 'Quality Verification',
-        probability: 78,
-        impact: 'high',
-        estimatedDelay: 45
-      },
-      {
-        stage: 'Material Processing',
-        probability: 34,
-        impact: 'medium',
-        estimatedDelay: 15
-      },
-      {
-        stage: 'Final Packaging',
-        probability: 12,
-        impact: 'low',
-        estimatedDelay: 8
-      }
-    ]
+    bottleneckPredictions: []
   });
 
   const [selectedTimeRange, setSelectedTimeRange] = useState('7d');
@@ -81,18 +62,15 @@ const Analytics: React.FC = () => {
 
   const refreshData = async () => {
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setAnalyticsData(prev => ({
-        ...prev,
-        qualityMetrics: {
-          ...prev.qualityMetrics,
-          averageScore: 94.2 + (Math.random() - 0.5) * 2,
-          defectRate: Math.max(0, 2.1 + (Math.random() - 0.5) * 0.5)
-        }
-      }));
+    try {
+      // Connect to real API endpoint here
+      // const data = await apiService.getAnalyticsData(selectedTimeRange);
+      // setAnalyticsData(data);
+    } catch (error) {
+      console.error('Failed to load analytics data:', error);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   const getImpactColor = (impact: string) => {

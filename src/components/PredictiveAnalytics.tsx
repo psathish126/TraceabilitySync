@@ -29,72 +29,23 @@ const PredictiveAnalytics = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate predictive analytics data
-    setTimeout(() => {
-      setPredictions([
-        {
-          id: '1',
-          metric: 'Production Throughput',
-          currentValue: 885,
-          predictedValue: 932,
-          confidence: 87,
-          trend: 'up',
-          timeframe: '7 days',
-          risk: 'low'
-        },
-        {
-          id: '2',
-          metric: 'Quality Score',
-          currentValue: 94.2,
-          predictedValue: 91.8,
-          confidence: 79,
-          trend: 'down',
-          timeframe: '14 days',
-          risk: 'medium'
-        },
-        {
-          id: '3',
-          metric: 'Supply Chain Efficiency',
-          currentValue: 78,
-          predictedValue: 85,
-          confidence: 92,
-          trend: 'up',
-          timeframe: '30 days',
-          risk: 'low'
-        },
-        {
-          id: '4',
-          metric: 'Defect Rate',
-          currentValue: 2.1,
-          predictedValue: 3.4,
-          confidence: 74,
-          trend: 'up',
-          timeframe: '21 days',
-          risk: 'high'
-        }
-      ]);
-
-      // Generate time series data
-      const baseDate = new Date();
-      const data = [];
-      for (let i = 30; i >= 0; i--) {
-        const date = new Date(baseDate);
-        date.setDate(date.getDate() - i);
-        
-        const actual = 85 + Math.sin(i * 0.2) * 10 + Math.random() * 5;
-        const predicted = actual + (Math.random() - 0.5) * 4;
-        const confidence = 75 + Math.random() * 20;
-        
-        data.push({
-          date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-          actual: Math.round(actual * 10) / 10,
-          predicted: Math.round(predicted * 10) / 10,
-          confidence: Math.round(confidence)
-        });
+    // Load real predictive analytics data
+    const loadPredictiveData = async () => {
+      setIsLoading(true);
+      try {
+        // Connect to real AI/ML service endpoint here
+        // const predictions = await predictiveService.getPredictions();
+        // const timeSeries = await predictiveService.getTimeSeriesData();
+        // setPredictions(predictions);
+        // setTimeSeriesData(timeSeries);
+      } catch (error) {
+        console.error('Failed to load predictive analytics:', error);
+      } finally {
+        setIsLoading(false);
       }
-      setTimeSeriesData(data);
-      setIsLoading(false);
-    }, 1200);
+    };
+
+    loadPredictiveData();
   }, []);
 
   const getTrendIcon = (trend: string) => {

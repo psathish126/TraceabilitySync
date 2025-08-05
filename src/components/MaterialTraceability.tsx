@@ -37,84 +37,23 @@ const MaterialTraceability: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedMaterial, setSelectedMaterial] = useState<Material | null>(null);
 
-  // Mock API data
-  const mockMaterials: Material[] = [
-    {
-      id: "MAT001",
-      type: "Cobalt",
-      origin: "DRC Mine X",
-      supplier: "Supplier A",
-      status: "In Processing",
-      timestamp: "2025-07-30T10:00:00Z",
-      compliance: "EU Battery Passport Compliant",
-      location: "Processing Plant Alpha",
-      batchNumber: "CB-2025-001",
-      quantity: 500,
-      qualityScore: 96
-    },
-    {
-      id: "MAT002",
-      type: "Lithium",
-      origin: "Chile Mine Y",
-      supplier: "Supplier B",
-      status: "Assembled",
-      timestamp: "2025-07-30T09:00:00Z",
-      compliance: "Pending Verification",
-      location: "Assembly Line 3",
-      batchNumber: "LI-2025-002",
-      quantity: 750,
-      qualityScore: 92
-    },
-    {
-      id: "MAT003",
-      type: "Nickel",
-      origin: "Indonesia Mine Z",
-      supplier: "Supplier C",
-      status: "Quality Check",
-      timestamp: "2025-07-30T08:30:00Z",
-      compliance: "EU Battery Passport Compliant",
-      location: "Quality Lab 1",
-      batchNumber: "NI-2025-003",
-      quantity: 300,
-      qualityScore: 98
-    },
-    {
-      id: "MAT004",
-      type: "Graphite",
-      origin: "China Mine W",
-      supplier: "Supplier D",
-      status: "Shipped",
-      timestamp: "2025-07-30T07:45:00Z",
-      compliance: "EU Battery Passport Compliant",
-      location: "Warehouse B",
-      batchNumber: "GR-2025-004",
-      quantity: 200,
-      qualityScore: 94
-    },
-    {
-      id: "MAT005",
-      type: "Cobalt",
-      origin: "Canada Mine V",
-      supplier: "Supplier E",
-      status: "Pending Verification",
-      timestamp: "2025-07-30T06:15:00Z",
-      compliance: "Under Review",
-      location: "Receiving Dock",
-      batchNumber: "CB-2025-005",
-      quantity: 450,
-      qualityScore: 88
-    }
-  ];
-
   useEffect(() => {
-    // Simulate API call
-    const loadMaterials = setTimeout(() => {
-      setMaterials(mockMaterials);
-      setFilteredMaterials(mockMaterials);
-      setIsLoading(false);
-    }, 1000);
+    // Load real materials data
+    const loadMaterials = async () => {
+      setIsLoading(true);
+      try {
+        // Connect to real API endpoint here
+        // const materialsData = await apiService.getMaterials();
+        // setMaterials(materialsData);
+        // setFilteredMaterials(materialsData);
+      } catch (error) {
+        console.error('Failed to load materials:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    return () => clearTimeout(loadMaterials);
+    loadMaterials();
   }, []);
 
   useEffect(() => {

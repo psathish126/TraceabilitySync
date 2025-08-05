@@ -20,72 +20,21 @@ const SupplyChainMap = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate supply chain data
-    setTimeout(() => {
-      setNodes([
-        {
-          id: 'origin-1',
-          name: 'DRC Cobalt Mine',
-          type: 'origin',
-          location: 'Democratic Republic of Congo',
-          status: 'active',
-          materials: ['Cobalt Ore'],
-          coordinates: { x: 15, y: 25 },
-          connections: ['supplier-1']
-        },
-        {
-          id: 'origin-2', 
-          name: 'Chile Lithium Mine',
-          type: 'origin',
-          location: 'Atacama Desert, Chile',
-          status: 'active',
-          materials: ['Lithium Carbonate'],
-          coordinates: { x: 10, y: 70 },
-          connections: ['supplier-2']
-        },
-        {
-          id: 'supplier-1',
-          name: 'RefineCorpCobalt',
-          type: 'supplier',
-          location: 'Belgium',
-          status: 'warning',
-          materials: ['Refined Cobalt'],
-          coordinates: { x: 30, y: 35 },
-          connections: ['processing-1']
-        },
-        {
-          id: 'supplier-2',
-          name: 'LithiumTech Solutions',
-          type: 'supplier', 
-          location: 'Shanghai, China',
-          status: 'active',
-          materials: ['Lithium Hydroxide'],
-          coordinates: { x: 70, y: 40 },
-          connections: ['processing-1']
-        },
-        {
-          id: 'processing-1',
-          name: 'Advanced Materials Inc',
-          type: 'processing',
-          location: 'South Korea',
-          status: 'active',
-          materials: ['Battery Precursors'],
-          coordinates: { x: 75, y: 35 },
-          connections: ['manufacturing-1']
-        },
-        {
-          id: 'manufacturing-1',
-          name: 'EV Battery Facility',
-          type: 'manufacturing',
-          location: 'Tesla Gigafactory, Nevada',
-          status: 'active',
-          materials: ['EV Battery Cells'],
-          coordinates: { x: 85, y: 50 },
-          connections: []
-        }
-      ]);
-      setIsLoading(false);
-    }, 1000);
+    // Load real supply chain data
+    const loadSupplyChainData = async () => {
+      setIsLoading(true);
+      try {
+        // Connect to real supply chain API endpoint here
+        // const chainData = await supplyChainService.getNodes();
+        // setNodes(chainData);
+      } catch (error) {
+        console.error('Failed to load supply chain data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadSupplyChainData();
   }, []);
 
   const getNodeIcon = (type: string) => {
