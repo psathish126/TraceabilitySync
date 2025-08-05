@@ -107,7 +107,7 @@ const Dashboard: React.FC = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-primary-foreground">
             <h1 className="text-4xl font-bold mb-2">TraceabilitySync Dashboard</h1>
-            <p className="text-xl opacity-90">Real-time material tracking for EV battery production</p>
+            <p className="text-xl opacity-90">Real-time material tracking in Manufacturing Industry</p>
           </div>
         </div>
       </div>
