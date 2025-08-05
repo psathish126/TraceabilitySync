@@ -7,7 +7,10 @@ import {
   Settings, 
   Bell,
   Menu,
-  X
+  X,
+  Brain,
+  Globe,
+  TrendingUp
 } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -21,8 +24,11 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
 
   const navigationItems = [
     { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
-    { id: 'traceability', label: 'Material Traceability', icon: Search },
-    { id: 'digital-twin', label: 'Digital Twin View', icon: Factory },
+    { id: 'traceability', label: 'Traceability', icon: Search },
+    { id: 'ai-insights', label: 'AI Insights', icon: Brain },
+    { id: 'supply-chain', label: 'Supply Chain', icon: Globe },
+    { id: 'predictive', label: 'Predictive', icon: TrendingUp },
+    { id: 'digital-twin', label: 'Digital Twin', icon: Factory },
     { id: 'analytics', label: 'Analytics', icon: BarChart3 },
     { id: 'compliance', label: 'Compliance', icon: Shield },
   ];
